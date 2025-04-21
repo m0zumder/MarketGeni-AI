@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aimarketing.controllers.MainViewController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New Campaign" onAction="#handleNewCampaign" />
+                        <MenuItem text="Open Campaign" onAction="#handleOpenCampaign" />
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" onAction="#handleExit" />
+                    </items>
+                </Menu>
+                <Menu text="Analytics">
+                    <items>
+                        <MenuItem text="Dashboard" onAction="#handleDashboard" />
+                        <MenuItem text="Reports" onAction="#handleReports" />
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" onAction="#handleAbout" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #f4f4f4;" prefWidth="200">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Campaigns" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="campaignListView" VBox.vgrow="ALWAYS"/>
+            <Button text="New Campaign" onAction="#handleNewCampaign" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+    
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab text="Campaign Overview" closable="false">
+                    <BorderPane fx:id="campaignOverviewPane">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </BorderPane>
+                </Tab>
+                <Tab text="AI Optimization" closable="false">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <Label text="AI Settings" style="-fx-font-weight: bold;"/>
+                        <GridPane vgap="10" hgap="10">
+                            <Label text="Learning Rate:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                            <Slider fx:id="learningRateSlider" min="0.0" max="1.0" value="0.1" 
+                                    GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                            <Label text="Optimization Target:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <ComboBox fx:id="optimizationTargetCombo" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        </GridPane>
+                        <Button text="Start Optimization" onAction="#handleStartOptimization" maxWidth="200"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Analytics" closable="false">
+                    <BorderPane fx:id="analyticsPane">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                    </BorderPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <HBox spacing="10" style="-fx-background-color: #e8e8e8;">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Ready" HBox.hgrow="ALWAYS"/>
+            <ProgressBar fx:id="progressBar" progress="-1.0" visible="false" prefWidth="200"/>
+        </HBox>
+    </bottom>
+</BorderPane>

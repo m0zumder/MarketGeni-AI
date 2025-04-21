@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        
+        <ScrollPane fx:id="chatScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <VBox fx:id="chatBox" spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+        
+        <HBox spacing="10" alignment="CENTER" style="-fx-background-color: #f4f4f4;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <TextField fx:id="userInput" HBox.hgrow="ALWAYS" 
+                       promptText="Type your message here..." 
+                       style="-fx-background-radius: 20; -fx-padding: 8 15 8 15;"/>
+            
+            <Button text="Send" onAction="#handleUserInput" 
+                    style="-fx-background-radius: 20; -fx-background-color: #2196f3; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

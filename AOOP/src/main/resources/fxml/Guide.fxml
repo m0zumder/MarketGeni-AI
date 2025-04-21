@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.aimarketing.controllers.GuideController"
+      spacing="10" styleClass="guide-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <VBox fx:id="guideBox" spacing="15" VBox.vgrow="ALWAYS">
+        <Label text="Welcome to AI Marketing Platform" styleClass="guide-title"/>
+        
+        <VBox spacing="10" styleClass="guide-section">
+            <Label text="Getting Started" styleClass="section-title"/>
+            <Button text="Campaign Management Guide" onAction="#startGuide" 
+                    userData="campaign" styleClass="guide-button"/>
+            <Button text="Analytics Guide" onAction="#startGuide" 
+                    userData="analytics" styleClass="guide-button"/>
+            <Button text="AI Features Guide" onAction="#startGuide" 
+                    userData="ai" styleClass="guide-button"/>
+        </VBox>
+        
+        <VBox spacing="10" styleClass="guide-section">
+            <Label text="Quick Tips" styleClass="section-title"/>
+            <ListView fx:id="tipsListView" VBox.vgrow="ALWAYS" styleClass="tips-list"/>
+        </VBox>
+    </VBox>
+</VBox>

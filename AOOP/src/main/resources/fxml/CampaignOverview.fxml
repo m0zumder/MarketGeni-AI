@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.aimarketing.controllers.CampaignOverviewController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <top>
+        <VBox spacing="10">
+            <Label fx:id="nameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label fx:id="descriptionLabel" wrapText="true"/>
+            
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <Label fx:id="budgetLabel" style="-fx-font-size: 18px;"/>
+                <Label fx:id="statusLabel" style="-fx-font-size: 18px;"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20">
+            <TitledPane text="Campaign Metrics" expanded="true">
+                <GridPane fx:id="metricsGrid" hgap="20" vgap="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                </GridPane>
+            </TitledPane>
+            
+            <TitledPane text="AI Insights" expanded="true">
+                <TextArea fx:id="insightsArea" wrapText="true" editable="false" 
+                          prefRowCount="6" style="-fx-font-family: 'Segoe UI';"/>
+            </TitledPane>
+            
+            <TitledPane text="A/B Testing Results" expanded="true">
+                <VBox fx:id="abTestingContainer" spacing="10">
+                    <Label text="No A/B testing data available" 
+                           fx:id="abTestingPlaceholder" 
+                           style="-fx-text-fill: #666;"/>
+                </VBox>
+            </TitledPane>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Refresh Data" onAction="#refreshData" 
+                    styleClass="action-button"/>
+            <Button text="Export Report" onAction="#exportReport" 
+                    styleClass="action-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

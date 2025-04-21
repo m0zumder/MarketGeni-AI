@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.aimarketing.controllers.AnalyticsDashboardController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <ComboBox fx:id="timeRangeCombo" prefWidth="150"/>
+            <ComboBox fx:id="metricTypeCombo" prefWidth="150"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="exportPdfButton" text="Export PDF" styleClass="action-button"/>
+            <Button fx:id="exportCsvButton" text="Export CSV" styleClass="action-button"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <SplitPane dividerPositions="0.6" VBox.vgrow="ALWAYS">
+            <VBox spacing="10">
+                <LineChart fx:id="metricsChart" title="Campaign Performance" 
+                           legendSide="RIGHT" animated="false" createSymbols="true">
+                    <xAxis>
+                        <CategoryAxis label="Time"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Value" tickLabelFormatter="${formatter}"/>
+                    </yAxis>
+                </LineChart>
+                
+                <TableView fx:id="metricsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn text="Metric" prefWidth="150">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="metric"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Value" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="value"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <VBox spacing="10">
+                <PieChart fx:id="conversionChart" title="Conversion Overview" 
+                          labelsVisible="true" legendSide="RIGHT"/>
+                
+                <TextArea fx:id="insightsArea" VBox.vgrow="ALWAYS" 
+                          wrapText="true" editable="false" 
+                          styleClass="insights-area"/>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

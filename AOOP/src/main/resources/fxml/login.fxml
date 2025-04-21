@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aimarketing.controllers.LoginController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <Text styleClass="title" text="AI Marketing Platform" />
+
+    <TabPane>
+        <Tab text="Login">
+            <VBox spacing="10">
+                <TextField fx:id="usernameField" promptText="Username or Email" />
+                <PasswordField fx:id="passwordField" promptText="Password" />
+                <Button onAction="#handleLogin" text="Login" styleClass="primary-button" maxWidth="Infinity" />
+            </VBox>
+        </Tab>
+        <Tab text="Register">
+            <VBox spacing="10">
+                <TextField fx:id="usernameField" promptText="Username" />
+                <TextField fx:id="emailField" promptText="Email" />
+                <PasswordField fx:id="passwordField" promptText="Password" />
+                <ComboBox fx:id="roleComboBox" promptText="Select Role" maxWidth="Infinity" />
+                <Button onAction="#handleRegister" text="Register" styleClass="primary-button" maxWidth="Infinity" />
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
